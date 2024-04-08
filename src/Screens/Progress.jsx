@@ -9,7 +9,7 @@ import Background from "../Components/Background";
 import Card from "../Components/Cards/Search";
 
 function Progress({route: { name, params }, navigation: { navigate }}) {
-    const { searchs } = useContext(Global);
+    const { searchs, token } = useContext(Global);
     const localized = strings[name];
     const css = styles[name];
 
@@ -20,7 +20,7 @@ function Progress({route: { name, params }, navigation: { navigate }}) {
             <ScrollView>
                 <Text style={css.title}>{localized.title}</Text>
                 {
-                    searchs.map((search, i) => <Card key={"search-" + i} data={search} nav={navigate} i={2} />)
+                    searchs.map((search, i) => <Card key={"search-" + i} token={token} data={search} nav={navigate} />)
                 }
                 { searchs.length <= 0 && <Text style={css.noData}>{localized.noResult}</Text> }
             </ScrollView>

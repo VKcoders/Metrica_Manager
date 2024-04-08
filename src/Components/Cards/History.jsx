@@ -1,15 +1,12 @@
-import { StyleSheet, Text, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 
-function CardSearch({data, token}) {
+function CardSearch({ data }) {
     const {id, introduction: qtdIntro, search: qtdQuestion, qtd_users, total} = data;
 
     return (
-        <TouchableOpacity style={styles.container}>
-            <Text>Identificador: {id}</Text>
-            <Text>Número de perguntas: {qtdIntro + qtdQuestion}</Text>
-            <Text>Entrevistadores: {qtd_users} pessoas</Text>
-            <Text style={{position: "absolute", right: 10, top: 10}}>{total}</Text>
-        </TouchableOpacity>
+        <View style={styles.container}>
+            <Text>Identificador da Pesquisa: {id}</Text>
+        </View>
     );
 }
 

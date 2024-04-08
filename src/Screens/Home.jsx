@@ -9,7 +9,7 @@ import Loader from "../Components/Loader";
 import { screens as styles } from "../Style";
 import { strings } from "../Localized";
 import CardSearch from "../Components/Cards/Search";
-// import CardHistory from "../Components/Cards/History";
+import CardHistory from "../Components/Cards/History";
 import { getAllMenagerSearchs } from "../Service/Search";
 import { getByClientId } from "../Service/History";
 
@@ -57,9 +57,9 @@ function Home({route: { name }, navigation: { navigate }}) {
                             <View style={css.searchContainer}>
                                 <Text style={css.searchContainer.title}>{localized.searchTopics[1]}</Text>
                                 <View style={css.searchContainer.container}>
-                                    {/* {
-                                        history.map((search, i) => <CardSearch key={"search-" + i} data={search} nav={navigate} />)
-                                    } */}
+                                    {
+                                        history.map((search, i) => <CardHistory key={"search-" + i} data={search} nav={navigate} />)
+                                    }
                                     { history.length <= 0 && <Text style={css.searchContainer.noData}>{localized.noResult}</Text> }
                                 </View>
                             </View>

@@ -1,9 +1,9 @@
 import { StyleSheet, Text, TouchableOpacity } from "react-native";
 
-function CardSearch({data, nav, i}) {
+function CardSearch({data, nav, token}) {
     const {id, introduction: qtdIntro, search: qtdQuestion, qtd_users, total} = data;
 
-    const handleClick = () => nav("SearchStatus", {searchId: id});
+    const handleClick = () => nav("SearchStatus", {searchId: id, token});
 
     return (
         <TouchableOpacity style={styles.container} onPress={handleClick}>

@@ -11,7 +11,7 @@ const strings = {
           noResult: "Vazio"
      },
      Progress: {
-          title: "Selecione uma pesquisa",
+          title: "Selecione a pesquisa",
           noResult: "Nehuma Pesquisa"
      },
      Component: {
