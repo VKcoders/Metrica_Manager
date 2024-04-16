@@ -53,6 +53,7 @@ export const getSearchMain = async (id, token) => {
         headers: { 'Authorization': token }
       }
     );
+
     return data;
   } catch (error) {
     console.error(error);

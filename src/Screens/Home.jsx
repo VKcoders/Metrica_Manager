@@ -1,6 +1,6 @@
 import { useEffect, useState, useContext } from "react";
 import { Global } from "../Context";
-import { View, Text, ScrollView } from "react-native";
+import { View, Text, ScrollView, BackHandler } from "react-native";
 
 import ToggleMenu from "../Components/ToggleMenu";
 import Background from "../Components/Background";
@@ -30,6 +30,9 @@ function Home({route: { name }, navigation: { navigate }}) {
             setLoader(false);
         };
         Jobs();
+
+        BackHandler.addEventListener('hardwareBackPress', () => true);
+        return () => BackHandler.removeEventListener('hardwareBackPress', () => true);
     }, []);
 
 
@@ -48,7 +51,13 @@ function Home({route: { name }, navigation: { navigate }}) {
                                 <Text style={css.searchContainer.title}>{localized.searchTopics[0]}</Text>
                                 <View style={css.searchContainer.container}>
                                     {
-                                        searchs.map((search, i) => <CardSearch key={"search-" + i} data={search} nav={navigate} i={1} />)
+                                        searchs.map((search, i) => <CardSearch
+                                            key={"search-" + i}
+                                            data={search}
+                                            nav={navigate}
+                                            token={token}
+                                            toWhere={"SearchResult"}
+                                        />)
                                     }
                                     { searchs.length <= 0 && <Text style={css.searchContainer.noData}>{localized.noResult}</Text> }
                                 </View>

@@ -20,7 +20,12 @@ function Progress({route: { name, params }, navigation: { navigate }}) {
             <ScrollView>
                 <Text style={css.title}>{localized.title}</Text>
                 {
-                    searchs.map((search, i) => <Card key={"search-" + i} token={token} data={search} nav={navigate} />)
+                    searchs.map((search, i) => <Card
+                        key={"search-" + i}
+                        token={token} data={search}
+                        nav={navigate}
+                        toWhere={"SearchStatus"}
+                    />)
                 }
                 { searchs.length <= 0 && <Text style={css.noData}>{localized.noResult}</Text> }
             </ScrollView>

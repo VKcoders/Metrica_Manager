@@ -18,12 +18,14 @@ const strings = {
           ToggleMenu: [
                ["Inicio", "Home"],
                ["Progresso", "Progress"],
-               ["Resultados", "Result"],
+               // ["Nova Pesquisa", "NewSearch"],
+               // ["Resultados", "Result"],
           ]
      },
      Modal: {
           Login: ["Usuário ou Senha inválido.", "Confirmar"],
      },
+     charColors: ["#DE8572", "#2C3E50", "#89CF3F", "#1A2DC8", "#1ABEC8", "#AC28A2", "#DE0000", "#000000", "#B9C807", "#F8C471", "#F8C471", "#D7BDE2"]
 };
 
 module.exports = strings;

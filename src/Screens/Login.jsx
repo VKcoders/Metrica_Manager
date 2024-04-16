@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { Global } from "../Context";
 import { SafeAreaView, View, Text, TouchableOpacity, TextInput, Image } from "react-native";
+import { LOGIN, PASSWORD } from "@env";
 
 import { generateToken } from "../Service/Token";
 
@@ -9,13 +10,15 @@ import { strings, icons } from "../Localized";
 import { Login as Modal } from "../Modal";
 
 import Background from "../Components/Background";
+import Loader from "../Components/Loader";
 
 function Login({route: { name }, navigation: { navigate }}) {
     const { setToken, setUser } = useContext(Global);
-    const [info, setInfo] = useState({username: '', password: ''});
+    const [info, setInfo] = useState({username: !LOGIN ? "" : LOGIN, password: !PASSWORD ? "": PASSWORD});
     const [modal, setModal] = useState(false);
     const [hidePassword, setHidePassword] = useState(true);
     const [canSubmit, setCanSubmit] = useState(false);
+    const [load, setLoad] = useState(false);
     const localized = strings[name];
     const css = styles[name];
 
@@ -31,13 +34,18 @@ function Login({route: { name }, navigation: { navigate }}) {
     }, [info]);
 
     const handleSubmit = async () => {
+        setLoad(true);
+
         const { status, token, name, id } = await generateToken(info);
+        
         if (!!status) {
             setToken(token);
             setUser({id, name});
+            setLoad(false);
             navigate("Home");
             return
         }
+        setLoad(false);
         setModal(true);
     }
 
@@ -78,22 +86,28 @@ function Login({route: { name }, navigation: { navigate }}) {
     return (
         <>
             <Background index={"2"} />
-            <SafeAreaView style={css.screen}>
-                <View style={css.infoContainer}>
-                    <View style={css.title}>
-                            <Image
-                                style={css.title.icon}
-                                source={icons.logo}
-                            />
-                        <Text style={css.title.text}>{localized.title}</Text>
-                    </View>
-                    { inputModel("username") }
-                    { inputModel("password") }
-                    <TouchableOpacity disabled={!canSubmit} style={[css.submitBtn, !!canSubmit && {backgroundColor: "#0096FF"}]} onPress={handleSubmit}>
-                        <Text style={css.submitBtn.text}>{localized.submitBtn}</Text>
-                    </TouchableOpacity>
-                </View>
-            </SafeAreaView>
+            {
+                !!load ? (
+                    <Loader />
+                ) : (
+                    <SafeAreaView style={css.screen}>
+                        <View style={css.infoContainer}>
+                            <View style={css.title}>
+                                    <Image
+                                        style={css.title.icon}
+                                        source={icons.logo}
+                                    />
+                                <Text style={css.title.text}>{localized.title}</Text>
+                            </View>
+                            { inputModel("username") }
+                            { inputModel("password") }
+                            <TouchableOpacity disabled={!canSubmit} style={[css.submitBtn, !!canSubmit && {backgroundColor: "#0096FF"}]} onPress={handleSubmit}>
+                                <Text style={css.submitBtn.text}>{localized.submitBtn}</Text>
+                            </TouchableOpacity>
+                        </View>
+                    </SafeAreaView>
+                )
+            }
         </>
     )
 }
