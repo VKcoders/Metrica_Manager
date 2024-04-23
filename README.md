@@ -31,7 +31,7 @@ Start the server
 ```
 
 
-## Referência
+## Dependencies
 
  - [Axios](https://www.npmjs.com/package/axios)
  - [Lottie React Native](https://www.npmjs.com/package/lottie-react-native)
