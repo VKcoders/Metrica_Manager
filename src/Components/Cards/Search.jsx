@@ -7,7 +7,7 @@ function CardSearch({data, nav, token, toWhere}) {
 
     return (
         <TouchableOpacity style={styles.container} onPress={handleClick}>
-            <Text>Identificador: {id}</Text>
+            <Text>Número de Protocolo da Pesquisa: {id}</Text>
             <Text>Número de perguntas: {qtdIntro + qtdQuestion}</Text>
             <Text>Entrevistadores: {qtd_users} pessoas</Text>
             <Text style={{position: "absolute", right: 10, top: 10}}>{total}</Text>

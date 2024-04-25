@@ -5,7 +5,7 @@ function CardSearch({ data }) {
 
     return (
         <View style={styles.container}>
-            <Text>Identificador da Pesquisa: {id}</Text>
+            <Text>Número de Protocolo da Pesquisa: {id}</Text>
         </View>
     );
 }
