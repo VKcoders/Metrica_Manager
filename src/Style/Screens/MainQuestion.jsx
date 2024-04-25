@@ -15,5 +15,9 @@ export default StyleSheet.create({
         backgroundColor: "#E5E4E2",
         padding: 15,
         marginBottom: 15
+    },
+    text: {
+        color: "black",
+        fontWeight: "600"
     }
 })

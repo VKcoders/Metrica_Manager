@@ -38,9 +38,6 @@ function Graphics ({route: { name, params: {id, token} }, navigation}) {
             <View style={css.screen}>
                 <Return nav={navigation} />
                 <View style={css.graphic}>
-                    {/* {
-                        Object.keys(collected).length > 2 ? <Pie data={collected} /> : <Bar data={collected} />
-                    } */}
                     <Pie data={collected} />
                 </View>
             </View>

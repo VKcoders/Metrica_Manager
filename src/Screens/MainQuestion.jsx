@@ -50,7 +50,7 @@ function MainQuestion ({route: { name, params: {id, age, token} }, navigation}) 
 
                             return (
                                 <TouchableOpacity key={indice} onPress={handlePress} style={css.questionBtn}>
-                                    <Text>{count + "º " + question}</Text>
+                                    <Text style={styles.text}>{count + "º " + question}</Text>
                                 </TouchableOpacity>
                             )
                         })

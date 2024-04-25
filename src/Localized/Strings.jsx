@@ -25,7 +25,8 @@ const strings = {
      Modal: {
           Login: ["Usuário ou Senha inválido.", "Confirmar"],
      },
-     charColors: ["#DE8572", "#2C3E50", "#89CF3F", "#1A2DC8", "#1ABEC8", "#AC28A2", "#DE0000", "#000000", "#B9C807", "#F8C471", "#F8C471", "#D7BDE2"]
+     charColors: ["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd", "#8c564b", "#e377c2", "#7f7f7f", "#bcbd22", "#17becf", "#ff9896"]
 };
+
 
 module.exports = strings;

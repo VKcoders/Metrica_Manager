@@ -7,10 +7,10 @@ function CardSearch({data, nav, token, toWhere}) {
 
     return (
         <TouchableOpacity style={styles.container} onPress={handleClick}>
-            <Text>Número de Protocolo da Pesquisa: {id}</Text>
-            <Text>Número de perguntas: {qtdIntro + qtdQuestion}</Text>
-            <Text>Entrevistadores: {qtd_users} pessoas</Text>
-            <Text style={{position: "absolute", right: 10, top: 10}}>{total}</Text>
+            <Text style={styles.text}>Número de Protocolo da Pesquisa: {id}</Text>
+            <Text style={styles.text}>Número de perguntas: {qtdIntro + qtdQuestion}</Text>
+            <Text style={styles.text}>Entrevistadores: {qtd_users} pessoas</Text>
+            <Text style={styles.text, styles.total}>{total}</Text>
         </TouchableOpacity>
     );
 }
@@ -22,8 +22,16 @@ const styles = StyleSheet.create({
         marginBottom: 5,
         padding: 15,
         borderRadius: 10
+    },
+    text: {
+        color: "black",
+        fontWeight: "600"
+    },
+    total: {
+        position: "absolute",
+        right: 10,
+        top: 10
     }
-
 })
 
 export default CardSearch;

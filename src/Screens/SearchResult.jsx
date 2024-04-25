@@ -45,7 +45,7 @@ function SearchResult({route: { name, params: {searchId, token} }, navigation}) 
                                 ))
                             }
                             <TouchableOpacity style={css.selection} onPress={() => handlePress(null)}>
-                                <Text style={css.selection.text}>Qualquer Idade</Text>
+                                <Text style={css.selection.text}>Todos</Text>
                             </TouchableOpacity>
                         </View>
                     </>

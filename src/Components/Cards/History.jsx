@@ -5,7 +5,7 @@ function CardSearch({ data }) {
 
     return (
         <View style={styles.container}>
-            <Text>Número de Protocolo da Pesquisa: {id}</Text>
+            <Text style={styles.text}>Número de Protocolo da Pesquisa: {id}</Text>
         </View>
     );
 }
@@ -17,8 +17,11 @@ const styles = StyleSheet.create({
         marginBottom: 5,
         padding: 15,
         borderRadius: 10
+    },
+    text: {
+        color: "black",
+        fontWeight: "600"
     }
-
 })
 
 export default CardSearch;

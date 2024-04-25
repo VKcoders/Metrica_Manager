@@ -35,6 +35,7 @@ export default StyleSheet.create({
             padding: 20,
             textAlign: "center",
             fontWeight: "600",
+            color: "black"
         },
         marginBottom: 20,
         padding: 10,
