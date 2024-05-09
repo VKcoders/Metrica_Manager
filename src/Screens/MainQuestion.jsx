@@ -6,7 +6,7 @@ import Loader from "../Components/Loader";
 
 import { getMainQuestions } from "../Service/Question";
 
-function MainQuestion ({route: { name, params: {id, age, token} }, navigation}) {
+function MainQuestion ({route: { name, params: {id, token} }, navigation}) {
     const [load, setLoad] = useState(true);
     const [questions, setQuestions] = useState({
         data: {},
@@ -17,7 +17,7 @@ function MainQuestion ({route: { name, params: {id, age, token} }, navigation}) 
     useEffect(() => {
         async function Job () {
             const questionsData = await getMainQuestions(id, token);
-            
+
             setQuestions({
                 data: questionsData,
                 keys: Object.keys(questionsData)

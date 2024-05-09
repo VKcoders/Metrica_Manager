@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
   },
   text: {
     color: "black",
-    fontWeight: "699"
+    fontWeight: "600"
   }
 })
 export default Pie;

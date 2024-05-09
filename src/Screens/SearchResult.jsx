@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import { Global } from "../Context";
 import { View, Text, TouchableOpacity } from "react-native";
 
 import { screens as styles } from "../Style";
@@ -9,6 +10,7 @@ import Background from "../Components/Background";
 import { getIntroQuestions } from "../Service/Question";
 
 function SearchResult({route: { name, params: {searchId, token} }, navigation}) {
+    const { setSelectedFilter } = useContext(Global);
     const [selection, setSelection] = useState([]);
     const [load, setLoad] = useState(true);
     const css = styles[name];
@@ -24,8 +26,12 @@ function SearchResult({route: { name, params: {searchId, token} }, navigation}) 
         Job();
     }, []);
 
-    const handlePress = (type) => navigation.navigate("MainQuestion", {id: searchId, age: type, token});
-
+    const handlePress = (type) => {
+        const rightKind = type === null ? "all" : type;
+        
+        setSelectedFilter(rightKind);
+        navigation.navigate("MainQuestion", {id: searchId, token});
+    }
 
     return (
         <View style={css.screen}>
