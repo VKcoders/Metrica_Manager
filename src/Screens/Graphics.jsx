@@ -9,7 +9,7 @@ import Pie from "../Components/Graphic/Pie";
 
 import { getAllAnswersByQuestion } from "../Service/Answer";
 
-function Graphics ({route: { name, params: {id, token} }, navigation}) {
+function Graphics ({route: { name, params: {questionId, searchId, token} }, navigation}) {
     const { selectedFilter } = useContext(Global);
     const [load, setLoad] = useState(true);
     const [collected, setCollected] = useState({})
@@ -17,7 +17,7 @@ function Graphics ({route: { name, params: {id, token} }, navigation}) {
 
     useEffect(() => {
         async function Job () {
-            const answersData = await getAllAnswersByQuestion(id, selectedFilter, token);
+            const answersData = await getAllAnswersByQuestion(questionId, searchId, selectedFilter, token);
 
             const answersCounted = answersData.reduce((acc, cur) => {
                 const resposta = cur.answer_collected;

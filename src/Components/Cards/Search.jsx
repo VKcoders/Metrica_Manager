@@ -10,7 +10,7 @@ function CardSearch({data, nav, token, toWhere}) {
             <Text style={styles.text}>Número de Protocolo da Pesquisa: {id}</Text>
             <Text style={styles.text}>Número de perguntas: {qtdIntro + qtdQuestion}</Text>
             <Text style={styles.text}>Entrevistadores: {qtd_users} pessoas</Text>
-            <Text style={styles.text, styles.total}>{total}</Text>
+            <Text style={[styles.text, styles.total]}>{total}</Text>
         </TouchableOpacity>
     );
 }

@@ -2,12 +2,15 @@ import api from "./api";
 
 const ENDPOINT = '/answer'
 
-export const getAllAnswersByQuestion = async (questionId, filter, token) => {
+export const getAllAnswersByQuestion = async (questionId, searchId, filter, token) => {
   try {
     const { data } = await api.get(
       `${ENDPOINT}/${questionId}`,
       {
-        headers: { 'Authorization': token }
+        headers: { 'Authorization': token },
+        params: {
+          searchId
+        }
       }
     );
 

@@ -14,10 +14,11 @@ export default StyleSheet.create({
     questionBtn: {
         backgroundColor: "#E5E4E2",
         padding: 15,
-        marginBottom: 15
+        marginBottom: 15,
+        color: "black"
     },
     text: {
-        color: "black",
+        color: "red",
         fontWeight: "600"
     }
 })
