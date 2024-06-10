@@ -18,7 +18,7 @@ function SearchResult({route: { name, params: {searchId, token} }, navigation}) 
     useEffect(() => {
         async function Job() {
             const paramQuestion = await getIntroQuestions(searchId, token);
-            const paramOnFormat = paramQuestion.split(',');
+            const paramOnFormat = paramQuestion.split(';');
 
             setSelection(paramOnFormat);
             setLoad(false);

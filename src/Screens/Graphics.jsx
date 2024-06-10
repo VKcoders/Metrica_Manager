@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import { Global } from "../Context";
-import { View } from "react-native";
+import { View, ScrollView } from "react-native";
 import { screens as styles } from "../Style";
 
 import Loader from "../Components/Loader";
@@ -36,12 +36,14 @@ function Graphics ({route: { name, params: {questionId, searchId, token} }, navi
         (
             <Loader />
         ) : (
-            <View style={css.screen}>
-                <Return nav={navigation} />
-                <View style={css.graphic}>
-                    <Pie data={collected} />
+            <ScrollView>
+                <View style={css.screen}>
+                    <Return nav={navigation} />
+                    <View style={css.graphic}>
+                        <Pie data={collected} />
+                    </View>
                 </View>
-            </View>
+            </ScrollView>
         )
 }
 
