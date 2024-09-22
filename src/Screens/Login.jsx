@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { Global } from "../Context";
 import { SafeAreaView, View, Text, TouchableOpacity, TextInput, Image } from "react-native";
+// import { LOGIN, PASSWORD } from "@env";
 import { LOGIN, PASSWORD } from "@env";
 
 import { generateToken } from "../Service/Token";
@@ -14,6 +15,7 @@ import Loader from "../Components/Loader";
 
 function Login({route: { name }, navigation: { navigate }}) {
     const { setToken, setUser } = useContext(Global);
+    // const [info, setInfo] = useState({username: !LOGIN ? "" : LOGIN, password: !PASSWORD ? "": PASSWORD});
     const [info, setInfo] = useState({username: !LOGIN ? "" : LOGIN, password: !PASSWORD ? "": PASSWORD});
     const [modal, setModal] = useState(false);
     const [hidePassword, setHidePassword] = useState(true);
