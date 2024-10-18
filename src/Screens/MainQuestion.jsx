@@ -46,7 +46,7 @@ function MainQuestion ({route: { name, params: {id, token} }, navigation}) {
                             const { question, question_id: questionId } = questions.data[key];
                             const count = (indice + 1) < 10 ? `0${indice + 1}` : indice + 1;
 
-                            const handlePress = () => navigation.navigate("Graphics", {questionId, searchId: id, token});
+                            const handlePress = () => navigation.navigate("Graphics", {questionId, searchId: id, token, question});
 
                             return (
                                 <TouchableOpacity key={indice} onPress={handlePress} style={css.questionBtn}>

@@ -11,5 +11,17 @@ export default StyleSheet.create({
         flexDirection: "column",
         alignContent: "center",
         justifyContent: "center",
+    },
+    text: {
+        fontSize: 16,
+        fontWeight: "600",
+        color: "black",
+        marginTop: 20
+    },
+    noSearchText: {
+        fontWeight: "600",
+        color: "gray",
+        marginTop: 200,
+        alignSelf: "center"
     }
 })

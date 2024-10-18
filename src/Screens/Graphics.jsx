@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import { Global } from "../Context";
-import { View, ScrollView } from "react-native";
+import { View, ScrollView, Text } from "react-native";
 import { screens as styles } from "../Style";
 
 import Loader from "../Components/Loader";
@@ -9,7 +9,7 @@ import Pie from "../Components/Graphic/Pie";
 
 import { getAllAnswersByQuestion } from "../Service/Answer";
 
-function Graphics ({route: { name, params: {questionId, searchId, token} }, navigation}) {
+function Graphics ({route: { name, params: {questionId, searchId, token, question} }, navigation}) {
     const { selectedFilter } = useContext(Global);
     const [load, setLoad] = useState(true);
     const [collected, setCollected] = useState({})
@@ -25,7 +25,7 @@ function Graphics ({route: { name, params: {questionId, searchId, token} }, navi
                 return acc;
             }, {});
           
-            setCollected(answersCounted)
+            setCollected(answersCounted);
             setLoad(false);
         };
         setLoad(true);
@@ -39,9 +39,14 @@ function Graphics ({route: { name, params: {questionId, searchId, token} }, navi
             <ScrollView>
                 <View style={css.screen}>
                     <Return nav={navigation} />
-                    <View style={css.graphic}>
-                        <Pie data={collected} />
-                    </View>
+                    <Text style={css.text}>{question}</Text>
+                    {
+                        Object.keys(collected).length === 0 ? <Text style={css.noSearchText}>sem pesquisa feita</Text> : (
+                            <View style={css.graphic}>
+                                <Pie data={collected} />
+                            </View>
+                        )
+                    }
                 </View>
             </ScrollView>
         )
