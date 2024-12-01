@@ -14,10 +14,19 @@ export const getIntroQuestions = async (searchId, token) => {
       }
     );
 
+    const results = Object.entries(data);
+    results.shift();
+    const section = results.flat().filter(item => typeof item !== 'string' && item);
+    const {questions, answers} = section.reduce((acc, obj) => {
+      acc.questions.push(obj.question);
+      acc.answers.push(obj.answer);
+      return acc;
+    }, {questions: [], answers: []});
+
     return {
-      question: data["section_03"].question,
-      answer: data["section_03"].answer,
-    }
+      questions,
+      answers,
+    };
   } catch (error) {
     console.error(error);
     return [];

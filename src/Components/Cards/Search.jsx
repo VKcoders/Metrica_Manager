@@ -31,8 +31,9 @@ const styles = StyleSheet.create({
         borderRadius: 10
     },
     text: {
-        color: "black",
-        fontWeight: "600"
+        color: '#666666',
+        fontSize: 16,
+        fontWeight: '700',
     },
     total: {
         position: "absolute",

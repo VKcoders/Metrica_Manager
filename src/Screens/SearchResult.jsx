@@ -18,12 +18,12 @@ function SearchResult({route: { name, params: {searchId, token} }, navigation}) 
 
     useEffect(() => {
         async function Job() {
-            const { answer, question } = await getIntroQuestions(searchId, token);
+            const { answers, questions } = await getIntroQuestions(searchId, token);
 
-            const paramOnFormat = answer.split(';');
+            const paramOnFormat = answers.map(answer => answer.split(';'));
 
             setSelection(paramOnFormat);
-            setFilterTitle(question.split(":"))
+            setFilterTitle(questions);
             setLoad(false);
         }
         Job();
@@ -48,20 +48,26 @@ function SearchResult({route: { name, params: {searchId, token} }, navigation}) 
 
                             <Return nav={navigation} />
 
-                            <Text style={css.title}>{filterTitle}</Text>
-                            <View style={css.selectionContainer}>
-                                {
-                                    selection.map((e, i) => (
-                                        <TouchableOpacity style={css.selection} key={"op-" + i} onPress={() => handlePress(e) }>
-                                            <Text style={css.selection.text}>{e}</Text>
-                                        </TouchableOpacity>
-                                    ))
-                                }
+                            {filterTitle.map((title, i) => (
+                                <>
+                                    <Text style={css.title}>{title}</Text>
+                                    <View style={css.selectionContainer}>
 
-                                <TouchableOpacity style={css.selection} onPress={() => handlePress(null)}>
-                                    <Text style={css.selection.text}>Todos</Text>
-                                </TouchableOpacity>
-                            </View>
+                                        {
+                                            selection[i].map((e, i) => (
+                                                <TouchableOpacity style={css.selection} key={'op-' + i} onPress={() => handlePress(e)}>
+                                                    <Text style={css.selection.text}>{e}</Text>
+                                                </TouchableOpacity>
+                                            ))
+                                        }
+
+                                        <TouchableOpacity style={css.selection} onPress={() => handlePress(null)}>
+                                            <Text style={css.selection.text}>Todos</Text>
+                                        </TouchableOpacity>
+                                    </View>
+                                </>
+                            ))}
+
                         </ScrollView>
                     </>
                 )
