@@ -14,10 +14,23 @@ export const getIntroQuestions = async (searchId, token) => {
       }
     );
 
+    const results = Object.entries(data);
+    results.shift();
+    const section = results.flat().filter(item => typeof item !== 'string' && item);
+    const {questions, answers} = section.reduce((acc, obj) => {
+      if (obj.type === 1 || obj.type === 4) {
+        return acc;
+      }
+      
+      acc.questions.push(obj.question);
+      acc.answers.push(obj.answer);
+      return acc;
+    }, {questions: [], answers: []});
+
     return {
-      question: data["section_03"].question,
-      answer: data["section_03"].answer,
-    }
+      questions,
+      answers,
+    };
   } catch (error) {
     console.error(error);
     return [];
@@ -27,7 +40,7 @@ export const getIntroQuestions = async (searchId, token) => {
 export const getMainQuestions = async (searchId, token) => {
   try {
     const searchData = await getSearchById(searchId, token);
-
+    
     const { data: { client_id, ...questions } } = await api.get(
       `${ENDPOINT}/question/${searchData.search}`,
       {

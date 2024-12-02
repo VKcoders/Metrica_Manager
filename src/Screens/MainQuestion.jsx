@@ -17,7 +17,7 @@ function MainQuestion ({route: { name, params: {id, token} }, navigation}) {
     useEffect(() => {
         async function Job () {
             const questionsData = await getMainQuestions(id, token);
-
+            
             setQuestions({
                 data: questionsData,
                 keys: Object.keys(questionsData)

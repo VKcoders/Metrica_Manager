@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext, Fragment } from "react";
 import { Global } from "../Context";
 import { View, Text, TouchableOpacity, ScrollView } from "react-native";
 
@@ -18,12 +18,12 @@ function SearchResult({route: { name, params: {searchId, token} }, navigation}) 
 
     useEffect(() => {
         async function Job() {
-            const { answer, question } = await getIntroQuestions(searchId, token);
+            const { answers, questions } = await getIntroQuestions(searchId, token);
 
-            const paramOnFormat = answer.split(';');
+            const paramOnFormat = answers.map(answer => answer.split(';'));
 
             setSelection(paramOnFormat);
-            setFilterTitle(question.split(":"))
+            setFilterTitle(questions);
             setLoad(false);
         }
         Job();
@@ -45,23 +45,25 @@ function SearchResult({route: { name, params: {searchId, token} }, navigation}) 
                 ) : (
                     <>
                         <ScrollView>
-
                             <Return nav={navigation} />
-
-                            <Text style={css.title}>{filterTitle}</Text>
-                            <View style={css.selectionContainer}>
-                                {
-                                    selection.map((e, i) => (
-                                        <TouchableOpacity style={css.selection} key={"op-" + i} onPress={() => handlePress(e) }>
-                                            <Text style={css.selection.text}>{e}</Text>
+                            {filterTitle.map((title, i) => (
+                                <Fragment key={`fragment-filter-${i}`}>
+                                    <Text style={css.title}>{title}</Text>
+                                    <View style={css.selectionContainer}>
+                                        {
+                                            selection[i].map((e, i) => (
+                                                <TouchableOpacity style={css.selection} key={'op-' + i} onPress={() => handlePress(e)}>
+                                                    <Text style={css.selection.text}>{e}</Text>
+                                                </TouchableOpacity>
+                                            ))
+                                        }
+                                        <TouchableOpacity style={css.selection} onPress={() => handlePress(null)}>
+                                            <Text style={css.selection.text}>Todos</Text>
                                         </TouchableOpacity>
-                                    ))
-                                }
+                                    </View>
+                                </Fragment>
+                            ))}
 
-                                <TouchableOpacity style={css.selection} onPress={() => handlePress(null)}>
-                                    <Text style={css.selection.text}>Todos</Text>
-                                </TouchableOpacity>
-                            </View>
                         </ScrollView>
                     </>
                 )

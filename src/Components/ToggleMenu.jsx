@@ -31,8 +31,8 @@ function ToggleMenu({currentLocation, nav}) {
                         const current = currentLocation === name[1];
 
                         return (
-                            <TouchableOpacity disabled={!!current} key={"menu-" + i} style={styles.menuItem} onPress={() => handleNavigation(name[1])}>
-                                <Text style={[styles.menuItem.text, !!current && {color: "#E5E4E2"}]}>{name[0]}</Text>
+                            <TouchableOpacity disabled={!!current} key={'menu-' + i} style={styles.menuItem} onPress={() => handleNavigation(name[1])}>
+                                <Text style={[styles.menuItem.text, !!current && {color: '#E5E4E2'}]}>• {name[0]}</Text>
                             </TouchableOpacity>
                         )
                     })
@@ -64,17 +64,17 @@ const styles = StyleSheet.create({
         width
     },
     menuContent: {
-        backgroundColor: "#708090",
-        position: "absolute",
+        backgroundColor: '#6f8faf',
+        position: 'absolute',
         zIndex: 11,
         height,
         width: width * 0.40
     },
     menuItem: {
         text: {
-            fontWeight: "600",
-            fontSize: 16,
-            color: "black",
+            fontWeight: '600',
+            fontSize: 20,
+            color: 'rgba(255, 255, 255, 0.336)',
         },
         padding: 8,
         margin: 10
