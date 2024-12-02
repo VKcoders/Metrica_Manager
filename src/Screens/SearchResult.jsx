@@ -45,14 +45,11 @@ function SearchResult({route: { name, params: {searchId, token} }, navigation}) 
                 ) : (
                     <>
                         <ScrollView>
-
                             <Return nav={navigation} />
-
                             {filterTitle.map((title, i) => (
                                 <Fragment key={`fragment-filter-${i}`}>
                                     <Text style={css.title}>{title}</Text>
                                     <View style={css.selectionContainer}>
-
                                         {
                                             selection[i].map((e, i) => (
                                                 <TouchableOpacity style={css.selection} key={'op-' + i} onPress={() => handlePress(e)}>
@@ -60,12 +57,11 @@ function SearchResult({route: { name, params: {searchId, token} }, navigation}) 
                                                 </TouchableOpacity>
                                             ))
                                         }
-
                                         <TouchableOpacity style={css.selection} onPress={() => handlePress(null)}>
                                             <Text style={css.selection.text}>Todos</Text>
                                         </TouchableOpacity>
                                     </View>
-                                </Fragment >
+                                </Fragment>
                             ))}
 
                         </ScrollView>
