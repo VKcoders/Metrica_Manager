@@ -40,7 +40,7 @@ export const getIntroQuestions = async (searchId, token) => {
 export const getMainQuestions = async (searchId, token) => {
   try {
     const searchData = await getSearchById(searchId, token);
-
+    
     const { data: { client_id, ...questions } } = await api.get(
       `${ENDPOINT}/question/${searchData.search}`,
       {
