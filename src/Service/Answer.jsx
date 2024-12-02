@@ -15,8 +15,6 @@ export const getAllAnswersByQuestion = async (questionId, searchId, filter, toke
       }
     );
 
-    // if (filter === "all") return data;
-    // return data.filter(({custom_filter}) => custom_filter === filter);
     return data;
   } catch (error) {
     console.error(error);
