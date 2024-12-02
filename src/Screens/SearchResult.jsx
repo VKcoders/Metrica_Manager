@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext, Fragment } from "react";
 import { Global } from "../Context";
 import { View, Text, TouchableOpacity, ScrollView } from "react-native";
 
@@ -49,7 +49,7 @@ function SearchResult({route: { name, params: {searchId, token} }, navigation}) 
                             <Return nav={navigation} />
 
                             {filterTitle.map((title, i) => (
-                                <>
+                                <Fragment key={`fragment-filter-${i}`}>
                                     <Text style={css.title}>{title}</Text>
                                     <View style={css.selectionContainer}>
 
@@ -65,7 +65,7 @@ function SearchResult({route: { name, params: {searchId, token} }, navigation}) 
                                             <Text style={css.selection.text}>Todos</Text>
                                         </TouchableOpacity>
                                     </View>
-                                </>
+                                </Fragment >
                             ))}
 
                         </ScrollView>
