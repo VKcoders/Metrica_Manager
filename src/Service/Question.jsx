@@ -18,6 +18,10 @@ export const getIntroQuestions = async (searchId, token) => {
     results.shift();
     const section = results.flat().filter(item => typeof item !== 'string' && item);
     const {questions, answers} = section.reduce((acc, obj) => {
+      if (obj.type === 1 || obj.type === 4) {
+        return acc;
+      }
+      
       acc.questions.push(obj.question);
       acc.answers.push(obj.answer);
       return acc;
